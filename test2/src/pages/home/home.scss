@@ -1,0 +1,274 @@
+@use "sass:map";
+@use "../../assets/styles/_theme.scss" as *;
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  margin: auto;
+  width: 100%;
+  background-color: map.get($theme-colors, "light");
+
+  @media screen and (min-width: 1281px) {
+    max-width: 80%;
+  }
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  @media screen and (min-width: 768px) {
+    max-width: 960px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 80px;
+
+  &--desktop {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  &--mobile {
+    padding-left: 1em;
+    padding-right: 1em;
+    justify-content: space-between;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  & > div {
+    flex: 1;
+  }
+
+  &__icon {
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.nav__menu-end {
+      justify-content: flex-end;
+    }
+
+    &-toggle {
+      padding: .5em 1em;
+      background-color: transparent;
+      color: map.get($theme-colors, "primary");
+      font-size: 1.1rem;
+      border-radius: map.get($theme-borders, "md");
+      border: 1px solid map.get($theme-colors, "primary");
+      outline: none;
+    }
+
+    &-item {
+      padding: 1em 1.5em;
+
+      &:not(:first-child),
+      &:not(:last-child) {
+        margin-left: .5em;  
+        margin-right: .5em;  
+      }
+
+      a {
+        display: block;
+        font-size: 1.1rem;
+        color: map.get($theme-colors, "dark");
+        text-decoration: none;
+        font-weight: 600;
+        transition: .25s color ease;
+
+        &:hover {
+          color: map.get($theme-colors, "primary");
+        }
+      }
+
+      &.cta {
+        a {
+          padding: .5em 1em;
+          background-color: map.get($theme-colors, "primary");
+          color: map.get($theme-colors, "light");
+          border-radius: map.get($theme-borders, "md");
+        }
+      }
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 4em 2em 0;
+  height: calc(100vh - 80px);
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  &__illustration {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+      width: 30%;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    margin-right: 4em;
+
+    h1 {
+      margin: 0 0 .5em;
+      font-size: 28px;
+      color: map.get($theme-colors, "primary");
+    }
+  }
+}
+
+.about {
+  padding: calc(1em + 100px) 1em 4em;
+  background-color: map.get($theme-colors, "primary");
+  color: map.get($theme-colors, "light");
+  clip-path: polygon(0 75px, 100% 0, 100% 100%, 0% 100%);
+
+  &__title {
+    text-align: center;
+    @media screen and (min-width: 768px) {
+      text-align: left;
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column-reverse;
+    
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      
+      p {
+        margin-top: 0;
+        margin-bottom: 1em;
+      }
+    }
+
+    &-img {
+      img {
+        border-radius: map.get($theme-borders, "lg");
+      }
+    }
+
+    &-text {
+      @media screen and (min-width: 768px) {
+        padding: 0 2em;
+      }
+    }
+  }
+}
+
+.pricing {
+  padding: 4em 2em 2em;
+
+  &__title {
+    font-size: 28px;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 2em;
+    }
+  }
+}
+
+.tier {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 1em;
+  row-gap: 1em;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  &-item {
+    padding: 1em;
+    background-color: map.get($theme-colors, "light");
+    border: 1px solid map.get($theme-colors, "gray");
+    border-top: 10px solid map.get($theme-colors, "gray");
+    border-radius: map.get($theme-borders, "md");
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: .25s ease transform;
+
+    &--1 {
+      border-top-color: map.get($theme-colors, "dark");
+      .tier-item__price {
+        color: map.get($theme-colors, "dark");
+      }
+    }
+    &--2 {
+      border-top-color: map.get($theme-colors, "primary");
+      .tier-item__price {
+        color: map.get($theme-colors, "primary");
+      }
+    }
+    &--3 {
+      border-top-color: map.get($theme-colors, "green");
+      .tier-item__price {
+        color: map.get($theme-colors, "green");
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    h4 {
+      margin: 0;
+    }
+
+    &__price {
+      margin: .5em 0;
+      font-weight: 600;
+      font-size: 1.8em;
+
+      small {
+        font-size: .7em;
+      }
+    }
+
+    &__price + p {
+      font-weight: 600;
+    }
+
+    ol {
+      padding: 0 1em;
+    }
+  }
+}
+
+.footer {
+  padding: 2em 2em;
+  text-align: center;
+}

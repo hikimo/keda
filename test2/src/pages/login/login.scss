@@ -1,0 +1,79 @@
+@use "sass:map";
+@use "../../assets/styles/theme" as *;
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.wrapper-login {
+  .container {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  .background {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      width: 70%;
+      display: block;
+    }
+  }
+}
+
+.auth {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+  }
+}
+
+.form {
+  &-control {
+    margin-bottom: 1em;
+    
+    & > * {
+      display: block;
+    }
+
+    label {
+      margin-bottom: .5em;
+      font-weight: 600;
+    }
+
+    input {
+      padding: .5em 1em;
+      width: 100%;
+      border: 1px solid map.get($theme-colors, "dark");
+      border-radius: map.get($theme-borders, "sm");
+    }
+
+    button[type="submit"] {
+      cursor: pointer;
+      padding: .5em 1em;
+      background-color: map.get($theme-colors, "primary");
+      color: map.get($theme-colors, "light");
+      font-size: 1em;
+      border: none;
+      border-radius: map.get($theme-borders, "sm");
+      outline: none;
+      transition: .25s ease transform;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
